@@ -240,7 +240,59 @@ nav::after {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;    /* ...existing code... */
+    
+    /* Hero layout tweaks to keep profile photo responsive and prevent it from covering content */
+    .hero-grid {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap; /* allow stacking when space is constrained */
+    }
+    
+    /* ensure hero-main stays above the photo and doesn't get visually hidden */
+    .hero-main {
+        flex: 1 1 60%;
+        min-width: 280px;
+        z-index: 1;
+    }
+    
+    /* photo container & image: use clamp + aspect-ratio so image never balloons */
+    .hero-photo-wrap {
+        flex: 0 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 260px; /* hard cap for very large screens */
+    }
+    
+    .hero-photo {
+        width: clamp(120px, 18vw, 220px); /* responsive but bounded */
+        aspect-ratio: 1 / 1;                /* keep perfect circle without forcing exact height */
+        height: auto;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid rgba(255,255,255,0.06);
+        box-shadow: 0 10px 30px rgba(0, 173, 173, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: block;
+        max-width: 100%;
+    }
+    
+    .hero-photo:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 40px rgba(0, 173, 173, 0.12);
+    }
+    
+    /* On very small screens hide the photo if space is too tight (optional) */
+    @media (max-width: 420px) {
+        .hero-photo-wrap {
+            display: none;
+        }
+    }
+    
+    /* ...existing code... */
 }
 
 .hero-photo {
