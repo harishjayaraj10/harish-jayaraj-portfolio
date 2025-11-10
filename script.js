@@ -38,9 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const navHeight = 72; // Height of navbar
+                const extraGap = 75; // Extra gap to scroll down to show heading properly
+                const targetPosition = target.offsetTop - navHeight + extraGap;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         });

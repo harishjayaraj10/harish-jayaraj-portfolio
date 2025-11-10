@@ -15,7 +15,7 @@
 
 /* make browser scrollIntoView and anchor jumps account for fixed header */
 html {
-    scroll-padding-top: var(--nav-height);
+    scroll-behavior: smooth;
 }
 
 /* Ensure sections used as anchor targets are offset below the fixed nav */
@@ -23,7 +23,6 @@ section {
     margin: 0;
     padding: 6rem 0;
     position: relative;
-    scroll-margin-top: calc(var(--nav-height) + 10px);
 }
 
 * {
@@ -214,7 +213,7 @@ nav::after {
     text-align: center;
     padding: 0 2rem;
     /* small top padding so content doesn't butt too close to nav on tall screens */
-    padding-top: 12px;
+    padding-top: 80px;
 }
 
 .hero-content {
@@ -289,6 +288,11 @@ nav::after {
     @media (max-width: 420px) {
         .hero-photo-wrap {
             display: none;
+        }      
+        .hero-main {
+            text-align: left;
+            margin-bottom: 3rem;
+            margin-top: clamp(12px, 6vh, 48px); /* added: extra gap above the "Hi" heading */
         }
     }
     
