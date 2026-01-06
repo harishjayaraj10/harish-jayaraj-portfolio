@@ -349,6 +349,12 @@ nav::after {
     color: var(--primary);
 }
 
+/* Muted / greyed text for subtle annotations */
+.muted {
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 400;
+}
+
 .type-wrap {
     font-size: 1.5rem;
     color: var(--text-secondary);
