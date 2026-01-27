@@ -1392,3 +1392,12 @@ footer {
         gap: 0.5rem;
     }
 }
+
+/* Pre6 specific link styling */
+a[href="https://pre6.ai"] {
+    color: #ef4444 !important;
+}
+
+a[href="https://pre6.ai"]:hover {
+    color: #dc2626 !important;
+}
